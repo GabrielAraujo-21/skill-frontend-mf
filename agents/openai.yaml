@@ -1,0 +1,6 @@
+interface:
+  display_name: "Frontend MF"
+  short_description: "Vue e Vuetify consultivos para projetos novos e legados"
+  default_prompt: "Use $skill-frontend-mf para avaliar meu frontend, recomendar as decisões pendentes e implementar a padronização autorizada de forma incremental."
+policy:
+  allow_implicit_invocation: true
