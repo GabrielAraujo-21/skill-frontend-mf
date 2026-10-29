@@ -1,0 +1,15 @@
+
+> avaliacao-skill-frontend-mf@1.0.0 build
+> vite build
+
+vite v7.3.7 building client environment for production...
+transforming...
+✓ 644 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                         0.37 kB │ gzip:   0.28 kB
+dist/assets/index-BRbZYIXP.css        346.79 kB │ gzip:  42.45 kB
+dist/assets/LoginView-DeUTBAY8.js       2.31 kB │ gzip:   1.07 kB
+dist/assets/ClientesView-DGKE2JRT.js    4.37 kB │ gzip:   1.96 kB
+dist/assets/index-DxhN6QWY.js         326.61 kB │ gzip: 114.77 kB
+✓ built in 11.70s

@@ -35,3 +35,13 @@ Descobrir scripts reais no package.json e governança antes de executar. Lint e 
 ## Avaliação executada em 29/10/2026
 
 Consulte o [relatório, evidências e reprodução](../evaluations/2026-10-29/README.md). Ele separa respostas consultivas de testes PHP/Node e documenta correções e limites; não certifica uma aplicação completa nem substitui os testes dos projetos consumidores.
+
+## Validação integrada Laravel e Vue/Vuetify
+
+[Projetos completos, dez testes Chromium, correções e reprodução](../evaluations/2026-10-29-integracao/README.md). A avaliação inclui autenticação real, SQLite, duas abas, falhas de rede e acessibilidade automatizada; os limites estão no relatório.
+
+### Estados reais de interface e sessão
+
+Em testes de respostas tardias, preservar a mesma instância da SPA/store e liberar a requisição antiga somente após o novo contexto estar carregado. Recarregar a página pode apagar justamente o estado que o teste deveria desafiar. Aguardar a resposta específica e a atualização da interface antes de afirmar ausência de dados; no logout, distinguir redirecionamento local de confirmação remota.
+
+Verificar acessibilidade também nos estados de carregamento, sucesso, erro e reconciliação. Defaults de uma biblioteca não comprovam contraste de labels/hints/alertas nem nomes acessíveis de loaders; medir no navegador e corrigir tema/defaults/composição, sem suprimir regras para aprovar. Depois de salvar, conferir que o reset reativo deixa o formulário inicial sem erros residuais, preservando a validação na próxima tentativa. Inspecionar o build efetivo: imports globais podem incorporar componentes não usados; preferir imports seletivos ou auto-imports cuja eliminação de código não utilizado tenha sido verificada, sem impor um limite universal de bundle.

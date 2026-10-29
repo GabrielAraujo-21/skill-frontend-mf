@@ -1,0 +1,15 @@
+
+> avaliacao-skill-frontend-mf@1.0.0 test
+> vitest run
+
+
+ RUN  v3.2.7 C:/Users/HP/.codex/visualizations/2026/10/29/01a1857f-daff-7c73-b00a-42d7e928fdda/validacao-completa/frontend
+
+ ✓ tests/cadastro.test.js (10 tests) 21ms
+ ✓ tests/sessao.test.js (5 tests) 51ms
+
+ Test Files  2 passed (2)
+      Tests  15 passed (15)
+   Start at  09:21:33
+   Duration  2.53s (transform 209ms, setup 0ms, collect 742ms, tests 72ms, environment 2ms, prepare 1.08s)
+

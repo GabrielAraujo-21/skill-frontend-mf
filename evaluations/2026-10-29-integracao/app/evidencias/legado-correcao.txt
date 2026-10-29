@@ -1,0 +1,10 @@
+
+ RUN  v3.2.7 C:/Users/HP/.codex/visualizations/2026/10/29/01a1857f-daff-7c73-b00a-42d7e928fdda/validacao-completa/frontend
+
+ ✓ legacy/cliente.test.js (2 tests) 11ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  09:01:06
+   Duration  3.07s (transform 239ms, setup 0ms, collect 225ms, tests 11ms, environment 2ms, prepare 1.11s)
+

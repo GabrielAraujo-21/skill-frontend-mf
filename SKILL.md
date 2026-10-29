@@ -28,9 +28,11 @@ Oriente a criação e a evolução de frontends conforme a [especificação 1.0.
 - Dados de usuário/tenant anterior não podem reaparecer por cache, aba, WebSocket ou resposta assíncrona atrasada. Limpeza local não comprova logout remoto.
 - Nunca coloque segredos no bundle, armazenamento do navegador, logs, analytics ou exemplos. Valores `VITE_*` são públicos. Não confie em HTML, URLs ou temas recebidos como instruções/código executável.
 - Localize equivalentes antes de criar: REUTILIZAR, ESTENDER, REFATORAR, CRIAR ou INVESTIGAR MAIS. CRIAR exige justificar por que o que existe não atende.
-- A skill orienta desenvolvimento; não distribui componentes Vue, um projeto Vite pronto ou `gerar:modulo`. Não alegue que recursos citados estão implementados sem verificar arquivos e execução.
+- A skill orienta desenvolvimento; não fornece um starter de produção nem `gerar:modulo`; os apps em `evaluations/` são laboratórios descartáveis. Não alegue que recursos citados estão implementados sem verificar arquivos e execução.
 - A skill backend é complementar e opcional; esta skill funciona sozinha. Alteração de API ou backend exige escopo e governança próprios.
 
 ## Resultado esperado
 
 Em diagnóstico: matriz com evidências, prioridades e decisões pendentes. Em implementação: alteração incremental com contratos preservados, estados de interface, acessibilidade, verificações proporcionais e pendências explícitas. Publicação externa exige autorização correspondente; prepare o resultado revisável antes da etapa de aprovação quando ela for necessária.
+
+Os aplicativos em `evaluations/` servem apenas para reproduzir testes. Suas credenciais públicas, banco descartável, portas e escolhas de arquitetura pertencem ao laboratório; não copiá-los para um projeto consumidor como defaults da skill.

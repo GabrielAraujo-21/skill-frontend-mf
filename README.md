@@ -189,3 +189,7 @@ A especificação é independente da versão 1.109.0 do documento de e-commerce 
 ## Avaliação executada em 29/10/2026
 
 Consulte o [relatório, evidências e reprodução](evaluations/2026-10-29/README.md). Ele separa respostas consultivas de testes PHP/Node e documenta correções e limites; não certifica uma aplicação completa nem substitui os testes dos projetos consumidores.
+
+## Validação integrada Laravel e Vue/Vuetify
+
+[Projetos completos, dez testes Chromium, correções e reprodução](evaluations/2026-10-29-integracao/README.md). A avaliação inclui autenticação real, SQLite, duas abas, falhas de rede e acessibilidade automatizada; os limites estão no relatório.

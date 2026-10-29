@@ -1,0 +1,26 @@
+
+ RUN  v3.2.7 C:/Users/HP/.codex/visualizations/2026/10/29/01a1857f-daff-7c73-b00a-42d7e928fdda/validacao-completa/frontend
+
+ ❯ legacy/cliente.test.js (2 tests | 1 failed) 52ms
+   ✓ preserva apresentação existente 9ms
+   × aceita cadastro antigo com nome null 26ms
+     → Cannot read properties of null (reading 'trim')
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  legacy/cliente.test.js > aceita cadastro antigo com nome null
+TypeError: Cannot read properties of null (reading 'trim')
+ ❯ nomeCliente legacy/cliente.js:1:60
+      1| export function nomeCliente(cliente) { return cliente.nome.trim() }
+       |                                                            ^
+      2| 
+ ❯ legacy/cliente.test.js:5:68
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 1 passed (2)
+   Start at  09:00:36
+   Duration  5.87s (transform 261ms, setup 0ms, collect 120ms, tests 52ms, environment 1ms, prepare 1.45s)
+

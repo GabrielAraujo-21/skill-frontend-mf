@@ -1,0 +1,3 @@
+# Transcrições e contextos originais do runner; não são código executável.
+*.txt -whitespace
+*.md -whitespace
