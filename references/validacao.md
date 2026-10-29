@@ -31,3 +31,7 @@ Executar em workspace descartável, sem segredos/serviços externos. Registrar o
 ## Projetos consumidores
 
 Descobrir scripts reais no package.json e governança antes de executar. Lint e testes relevantes a código alterado; build quando afeta montagem/imports/dependências. Documentação sozinha não exige suíte. Em UI, validação de teclado/foco e visual proporcional; axe não cobre tudo. Testes de contrato/API e integração real em ambiente autorizado quando necessários. Registrar versão, contexto, comandos/resultados e cobertura adiada; não declarar sucesso de navegador sem abrir/executar o fluxo.
+
+## Avaliação executada em 29/10/2026
+
+Consulte o [relatório, evidências e reprodução](../evaluations/2026-10-29/README.md). Ele separa respostas consultivas de testes PHP/Node e documenta correções e limites; não certifica uma aplicação completa nem substitui os testes dos projetos consumidores.

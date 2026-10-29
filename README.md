@@ -185,3 +185,7 @@ O primeiro deve retornar `Validação estrutural: OK`. Os testes verificam o pr�
 ## Limites da entrega
 
 A especificação é independente da versão 1.109.0 do documento de e-commerce que a originou. Aprovações jurídicas, marca, contratos e histórico daquele produto não são universais. Este pacote não altera o ERP, não instala automaticamente a skill no Codex, não configura serviços e não publica aplicações. Mutações externas exigem autorização específica do escopo.
+
+## Avaliação executada em 29/10/2026
+
+Consulte o [relatório, evidências e reprodução](evaluations/2026-10-29/README.md). Ele separa respostas consultivas de testes PHP/Node e documenta correções e limites; não certifica uma aplicação completa nem substitui os testes dos projetos consumidores.

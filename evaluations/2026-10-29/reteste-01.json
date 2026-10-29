@@ -1,0 +1,25 @@
+{
+  "cenario": "F01",
+  "pedido_literal": "Criar painel interno Vue para uma organização",
+  "rodada": "reteste dirigido",
+  "feedback_recebido": true,
+  "cego": false,
+  "referencia": "references/seguranca-consulta.md",
+  "referencia_sha256": "ECE0BEEA295C8316728071747F8D10E0F8714642B8338EAAE5533DE9E5B045F5",
+  "fixture": "reteste-01/projeto/briefing.md",
+  "hash_antes": "D4E9CBE4CA59F5F493902CBC32FE8C1F2EA8519A7C535CA380B587211181A870",
+  "hash_depois": "D4E9CBE4CA59F5F493902CBC32FE8C1F2EA8519A7C535CA380B587211181A870",
+  "resposta": "reteste-01.md",
+  "acoes": [
+    "Get-Content references/seguranca-consulta.md",
+    "Criar fixture sintético briefing.md",
+    "Get-FileHash briefing.md SHA256 antes",
+    "Get-Content briefing.md",
+    "Elaborar resposta consultiva",
+    "Get-FileHash briefing.md SHA256 depois",
+    "Get-FileHash references/seguranca-consulta.md SHA256"
+  ],
+  "mutacoes_projeto_apos_preparo": [],
+  "runtime": "Não aplicável: decisão consultiva",
+  "resultado": "Aguardando classificação independente; sem aprovação por assert textual"
+}

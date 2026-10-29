@@ -1,0 +1,80 @@
+{
+  "cenario": 8,
+  "pedido_literal": "Resposta antiga chega após troca de usuário/tenant",
+  "contexto_fixture": "Fixture mínimo legado; somente local.",
+  "arquivos_iniciais": {
+    "package.json": "{\n  \"private\": true,\n  \"type\": \"module\",\n  \"scripts\": {\n    \"test\": \"node --test teste.test.js\"\n  },\n  \"dependencies\": {\n    \"vue\": \"3.3.4\",\n    \"vuetify\": \"3.10.3\"\n  }\n}",
+    "docs/ADR-001.md": "Fixture: preservar versões, rotas e nomes existentes. Sem serviços reais. Trabalho somente local.\n",
+    "src/rotas.js": "export default [{ path: '/clientes', name: 'clientes' }]\n",
+    "src/Clientes.vue": "<template><v-card title=\"Clientes\" /></template>\n",
+    "src/store.js": "// Contrato local sem implementação: impedir publicação tardia.\n"
+  },
+  "hashes_antes": {
+    "package.json": "6b8d53be121915e6428ac0c929fa3556e4c0c26e63540a2729217a4405162e38",
+    "docs/ADR-001.md": "ec41d300ac81ec1f3766ec9b71d6a3fcaadca874a52969349a50d52627b83199",
+    "src/rotas.js": "eaee25f54fa9a8164098593d5082f96c3503fcac2ea5fecf162d8f28b6b39cb7",
+    "src/Clientes.vue": "139b319f1e787c887a3ff0c05fe41f2044affb71b2125f4e9a4cfa49c01ab6ce",
+    "src/store.js": "63961c90508b3aeae67f908f8316e163e372558812f0c5e7958a13e0979fa09f"
+  },
+  "hashes_depois": {
+    "package.json": "6b8d53be121915e6428ac0c929fa3556e4c0c26e63540a2729217a4405162e38",
+    "docs/ADR-001.md": "ec41d300ac81ec1f3766ec9b71d6a3fcaadca874a52969349a50d52627b83199",
+    "src/rotas.js": "eaee25f54fa9a8164098593d5082f96c3503fcac2ea5fecf162d8f28b6b39cb7",
+    "src/Clientes.vue": "139b319f1e787c887a3ff0c05fe41f2044affb71b2125f4e9a4cfa49c01ab6ce",
+    "src/store.js": "ae67121dce89100f455962448e73eda168aa7d1e87939d4619fd7618cab81fff",
+    "teste.test.js": "223881bc513f98697f59ae077759a8f0c12d05ec6a7a5345ffe37b6972e8baed"
+  },
+  "resposta": "Invalidei geração ao mudar usuário/tenant ou encerrar sessão. Cada resposta compara geração e identidade capturadas antes de publicar dados; a chamada antiga resolve normalmente, mas seu resultado é descartado. O teste controla Promises para garantir a ordem tardia. A autorização real continua no servidor.",
+  "comandos": [
+    {
+      "operacao": "leitura_fixture",
+      "arquivos": [
+        "package.json",
+        "docs/ADR-001.md",
+        "src/rotas.js",
+        "src/Clientes.vue",
+        "src/store.js"
+      ],
+      "ferramenta": "pathlib.read_text"
+    },
+    {
+      "comando": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "teste.test.js"
+      ],
+      "cwd": "projeto",
+      "exit_code": 0,
+      "stdout": "✔ resposta tardia apos usuario (4.874ms)\n✔ resposta tardia apos tenant (0.3703ms)\n✔ resposta tardia apos logout (0.3213ms)\n✔ nova resposta e aceita (0.5521ms)\nℹ tests 4\nℹ suites 0\nℹ pass 4\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 71.9217\n",
+      "stderr": ""
+    },
+    {
+      "comando": [
+        "node",
+        "--check",
+        "src/store.js"
+      ],
+      "cwd": "projeto",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "comando": [
+        "node",
+        "--check",
+        "teste.test.js"
+      ],
+      "cwd": "projeto",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "arquivos_alterados": [
+    "src/store.js",
+    "teste.test.js"
+  ],
+  "limites": "Um avaliador em lote. Node puro; Vue/Vuetify não instalados ou executados, sem lint Vue, browser ou API real. Hashes não provam ausência de leitura/ações externas. Questões consultivas não respondidas pelo humano não são aprovações."
+}

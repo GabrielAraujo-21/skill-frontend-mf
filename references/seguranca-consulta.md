@@ -4,7 +4,7 @@
 
 Antes de perguntar, procure respostas em instruções, ADRs, design system, código, manifests/lockfiles e contratos não sensíveis. Separe decisão aprovada de comportamento encontrado; uma divergência é achado, não autorização para sobrescrever a decisão.
 
-Pergunte em pequenos grupos (preferencialmente até três decisões por etapa). Cada pergunta contém contexto, opções aplicáveis, recomendação fundamentada e consequências. Não faça questionário completo para uma correção pontual. Não repita escolha já resolvida. Não peça segredos no chat.
+Pergunte em pequenos grupos (preferencialmente até três decisões por etapa). Cada pergunta contém contexto, opções aplicáveis, recomendação fundamentada e consequências. Não faça questionário completo para uma correção pontual. Não repita escolha já resolvida, inclusive quando ela está explícita no pedido atual e ainda não virou ADR. Exemplo: um painel solicitado para uma única organização parte de contexto único; não reabra a escolha de multi-tenancy sem uma ambiguidade concreta de acesso ou escopo. Pergunte somente pelas lacunas que impedem a próxima implementação. Não peça segredos no chat.
 
 Registre decisões na fonte de governança existente. Sem uma, use registro mínimo com tema, escolha, justificativa, escopo, consequências e estado (proposta/aprovada/substituída). Em diagnóstico, proponha o registro na resposta sem criar arquivos. Instruções do usuário e decisões locais prevalecem sobre defaults da skill; resolver conflitos materiais antes da mudança afetada.
 
