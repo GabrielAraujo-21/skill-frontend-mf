@@ -16,6 +16,7 @@ Classificar REUTILIZAR, ESTENDER, REFATORAR, CRIAR ou INVESTIGAR MAIS. A criaç�
 - Criar testes de caracterização quando necessários para preservar comportamento antes da refatoração. Não consolidar uma falha de segurança como contrato imutável.
 - Mapear tokens e componentes existentes antes de criar `Base*`, nova pasta shared ou novo tema. Alteração visual material pede referência/protótipo conforme governança.
 - Identificar estado duplicado, imports circulares, caches sem contexto e efeitos sem limpeza antes de adicionar bibliotecas de estado ou dados.
+- Vuetify 3 não é defeito a corrigir nesta adequação. Migrar para Vuetify 4 é frente própria, com escopo aprovado e referência visual: levantar `h1`–`h6`, `v-row`/`v-col`, `elevation-*` e classes `text-*`; decidir `defaultTheme`; restaurar temporariamente reset, tipografia, elevação, grid ou pontos de quebra pelos trechos do guia oficial, se isso reduzir o risco, e migrar por área. `vuetify-codemods` é opção a avaliar, com revisão do diff. Fonte: https://vuetifyjs.com/en/getting-started/upgrade-guide/.
 
 ## Execução incremental
 

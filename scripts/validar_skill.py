@@ -13,7 +13,7 @@ def validar(raiz):
     obrigatorios = [
         "SKILL.md",
         "agents/openai.yaml",
-        "references/especificacao-1.0.0.md",
+        "references/especificacao-2.0.0.md",
         "references/seguranca-consulta.md",
         "references/projeto-novo.md",
         "references/projeto-existente.md",
@@ -33,10 +33,10 @@ def validar(raiz):
                 erros.append("Nome da skill divergente")
             if not re.search(r"^description: \S.+$", cabecalho[1], re.MULTILINE):
                 erros.append("Descrição ausente")
-            if 'version: "1.0.0"' not in cabecalho[1]:
+            if 'version: "2.0.0"' not in cabecalho[1]:
                 erros.append("Versão do pacote divergente")
     for arquivo in raiz.rglob("*.md"):
-        if ".git" in arquivo.parts:
+        if {".git", "vendor", "node_modules"} & set(arquivo.parts):
             continue
         for link in re.findall(
             r"\[[^\]]*\]\(([^)]+)\)", arquivo.read_text(encoding="utf-8")
@@ -48,8 +48,8 @@ def validar(raiz):
                 erros.append(
                     f"Referência local inválida em {arquivo.relative_to(raiz)}: {link}"
                 )
-    especificacao = raiz / "references/especificacao-1.0.0.md"
-    if especificacao.is_file() and "**Versão:** 1.0.0" not in especificacao.read_text(
+    especificacao = raiz / "references/especificacao-2.0.0.md"
+    if especificacao.is_file() and "**Versão:** 2.0.0" not in especificacao.read_text(
         encoding="utf-8"
     ):
         erros.append("Versão da especificação divergente")

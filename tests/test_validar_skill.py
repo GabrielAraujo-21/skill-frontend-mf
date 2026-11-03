@@ -22,7 +22,9 @@ class TestarValidador(unittest.TestCase):
         shutil.copytree(
             RAIZ,
             self.copia,
-            ignore=shutil.ignore_patterns(".git", "__pycache__", ".ruff_cache"),
+            ignore=shutil.ignore_patterns(
+                ".git", "__pycache__", ".ruff_cache", "node_modules", "vendor"
+            ),
         )
 
     def alterar_entrada(self, transformar):
@@ -61,9 +63,15 @@ class TestarValidador(unittest.TestCase):
             )
         )
 
+    def test_ignora_dependencias_instaladas(self):
+        pacote = self.copia / "node_modules/pacote"
+        pacote.mkdir(parents=True)
+        (pacote / "README.md").write_text("[Ausente](ausente.md)", encoding="utf-8")
+        self.assertEqual(MODULO.validar(self.copia), [])
+
     def test_versao_divergente(self):
         self.alterar_entrada(
-            lambda texto: texto.replace('version: "1.0.0"', 'version: "9.9.9"')
+            lambda texto: texto.replace('version: "2.0.0"', 'version: "9.9.9"')
         )
         self.assertTrue(
             any("Versão do pacote" in erro for erro in MODULO.validar(self.copia))

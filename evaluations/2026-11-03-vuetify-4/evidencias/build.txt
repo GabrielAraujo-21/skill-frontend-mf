@@ -1,0 +1,17 @@
+
+> laboratorio-vuetify-4@2.0.0 build
+> vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 740 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                          0.45 kB │ gzip:  0.29 kB
+dist/assets/ClientesView-B7TV_qFv.css  139.31 kB │ gzip: 18.11 kB
+dist/assets/index-BiJ078ej.css         191.12 kB │ gzip: 28.02 kB
+dist/assets/index-DvXr8b2u.js          201.58 kB │ gzip: 76.81 kB
+dist/assets/ClientesView-SQx-mN93.js   255.69 kB │ gzip: 84.22 kB
+
+✓ built in 1.17s
+build-exit=0
