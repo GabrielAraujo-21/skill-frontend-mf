@@ -1,0 +1,17 @@
+
+> laboratorio-vuetify-4@2.0.0 test
+> vitest run
+
+
+ RUN  v5.1.0 /lab/app
+
+ ✓ tests/vuetify4.test.js (5 tests) 2822ms
+   ✓ referência Vuetify 4 (5)
+     ✓ monta a fatia com Router, Pinia e Axios sem repovoar resposta antiga 2769ms
+
+ Test Files  1 passed (1)
+      Tests  5 passed (5)
+   Start at  13:21:00
+   Duration  21.17s (import 43%, environment 39%, tests 14%, transform 5%)
+
+vitest-exit=0

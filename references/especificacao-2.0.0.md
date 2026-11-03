@@ -1,8 +1,8 @@
 # Spec de Convenções de Frontend MF
 
-**Versão:** 1.0.0
+**Versão:** 2.0.0
 
-**Data:** 2026-10-29
+**Data:** 2026-11-03
 
 **Status:** Referência consolidada; aplicação condicionada às decisões e à governança de cada projeto.
 
@@ -12,9 +12,11 @@ DEVE/NÃO DEVE: requisito no perfil aplicável. DEVERIA: recomendação com desv
 
 ## 1. Stack de referência e compatibilidade
 
-Vue 3, Composition API com `<script setup>`, JavaScript em `.js`/`.vue`, Vuetify 3, Pinia, Vue Router, Axios e Vite. Não criar scripts TypeScript. Identificadores novos de domínio em pt-BR sem acentos, preservando contratos e símbolos do framework. JSDoc para contratos e funções relevantes, sem documentação redundante de cada linha.
+Vue 3, Composition API com `<script setup>`, JavaScript em `.js`/`.vue`, Vuetify 4 em projeto novo, Pinia, Vue Router, Axios e Vite. Não criar scripts TypeScript. Identificadores novos de domínio em pt-BR sem acentos, preservando contratos e símbolos do framework. JSDoc para contratos e funções relevantes, sem documentação redundante de cada linha.
 
 A fonte cita Vue 3.5.43, Vuetify 3.10.3, Pinia 4.0.3 e Vue Router 5.3.1. Esses números são histórico da fonte, não instrução de instalação: conferir versões disponíveis/instaladas, compatibilidade, Node, package manager, manifests e lockfiles antes de propor versões. Não atualizar projeto existente automaticamente.
+
+Vuetify 4 exige Vue 3.5 ou superior. Vuetify 3 está em LTS até 2027-07-27; projeto existente nele é preservado, e a migração segue [projetos existentes](projeto-existente.md). O [laboratório de 2026-11-03](../evaluations/2026-11-03-vuetify-4/README.md) exercitou Vue 3.5.44, Vuetify 4.3.1, Pinia 4.1.0, Vue Router 5.4.0, Axios 1.21.0 e Vite 8.3.5, que pede Node ^20.19 ou >=22.12. Esses números registram o ensaio e também devem ser conferidos antes de instalar.
 
 Selecionar versão Node e gerenciador compatíveis, versionar lockfile e evitar misturar gerenciadores. Pacote novo exige necessidade, reuso avaliado, compatibilidade, custo no bundle e aprovação aplicável. Não introduzir plugin apenas para repetir recurso nativo.
 
@@ -92,7 +94,7 @@ Rotas lazy com meta de título/layout/requisitos conforme projeto; slugs e parâ
 
 Vuetify por composição; labels visíveis, instrução necessária, erro associado, resumo de erros quando útil. Validação cliente melhora UX; servidor é autoridade. Erros de campo desconhecido aparecem no resumo, não desaparecem. Distinguir ausência, vazio e null. Separar erro transitório, erro persistente e validação junto ao campo.
 
-Definir dirty state, envio, sucesso, falha, conflito e cancelamento. Prevenir duplo envio e preservar entrada segura quando falhar. Avisar antes de abandonar alterações relevantes sem bloquear toda navegação. Autosave apenas com requisito, status e conflito definidos. Formulário por schema só para repetição real, com extensão acessível e sem linguagem de programação improvisada.
+Definir dirty state, envio, sucesso, falha, conflito e cancelamento. Prevenir duplo envio e preservar entrada segura quando falhar. Avisar antes de abandonar alterações relevantes sem bloquear toda navegação. Autosave apenas com requisito, status e conflito definidos. Formulário por schema só para repetição real, com extensão acessível e sem linguagem de programação improvisada. Em Vuetify 4, as variáveis de slot de `VForm` (`errors`, `isDisabled`, `isReadonly`, `isValidating`, `isValid`, `items`) chegam desembrulhadas: não usar `.value`; `isValid` começa em `null`. `VDatePicker` com `multiple="range"` emite somente início e fim.
 
 Moeda e escala vêm do contrato. Exibir valores exatos sem intermediários float indevidos; respeitar limites seguros do JSON/JavaScript e usar strings quando necessário. Não assumir centavos para toda moeda nem fazer câmbio implícito. `Intl` com compatibilidade verificada; arredondamento comercial fica no backend. Datas civis Y-m-d não são instantes UTC; fusos por usuário/tenant/regra, não inferidos universalmente do país.
 
@@ -102,7 +104,7 @@ Senhas de usuário podem usar gerenciadores, colagem e revelação acessível co
 
 ## 10. Componentes e biblioteca compartilhada
 
-Usar Vuetify diretamente, defaults e utilitários antes de criar wrappers. Componente próprio exige responsabilidade reutilizável não atendida adequadamente por composição existente. Não criar BaseBotao/BaseCampo universal só para repetir props. Não exigir uma lista de componentes para todos os projetos.
+Usar Vuetify diretamente, defaults e utilitários antes de criar wrappers. Componente próprio exige responsabilidade reutilizável não atendida adequadamente por composição existente. Não criar BaseBotao/BaseCampo universal só para repetir props. Não exigir uma lista de componentes para todos os projetos. Em Vuetify 4, nos slots de `VSelect`, `VCombobox` e `VAutocomplete`, `item` é o valor bruto e `internalItem` é o item interno. `VSnackbarQueue` usa o slot `item`, e `VSnackbar` perdeu `multi-line`. Em `VRow`, `dense` vira `density="compact"` ou `gap`, e `align`/`justify` viram classes utilitárias; em `VCol`, `order` e `align-self` também. Em defaults, `undefined` não sobrescreve mais o valor global: usar `null` para limpar.
 
 Candidatos gerais: cabeçalho, estados de coleção, feedback, confirmação e composições de formulário/lista. Especializados: moeda, documento, upload, reautenticação e texto rico quando necessários. De domínio: carrinho, cartão salvo, comparação, comissões, decoração e integração de gateway permanecem fora do núcleo genérico.
 
@@ -118,9 +120,11 @@ Feedback global, validação de campo e estado persistente são categorias disti
 
 Fonte única de tokens e mapeamento ao tema/defaults Vuetify. Identidade de marca é perfil do projeto. Sem literais de cor/raio/espaçamento espalhados; priorizar classes Vuetify. CSS próprio somente quando necessário, com escopo, tokens e justificativa. Não proibir CSS a ponto de impedir acessibilidade ou comportamento não coberto pela biblioteca.
 
-Tema claro/escuro conforme requisito, preferência e escolha do usuário; tokens semânticos testados. Tema vindo da API/cache é dado não confiável: schema, allowlist de propriedades/valores, limites, fallback e versão; não aceitar CSS/script arbitrário. Bootstrap sem flash deve funcionar com CSP e armazenamento indisponível, sem assumir acesso síncrono à CDN.
+Vuetify 4 organiza os estilos em cascade layers (`vuetify-core`, `vuetify-components`, `vuetify-overrides`, `vuetify-utilities`, `vuetify-final`): CSS próprio sem layer vence Vuetify, utilitários inclusive, então declarar camadas próprias em vez de recorrer a `!important`. A ordem declarada fica em arquivo linkado no `index.html`, não importado no bundle, para não variar com a saída do build. O reset global foi reduzido: elementos como `h1`–`h6`, `p`, `ul` e controles nativos mantêm margens e estilos do navegador até que o projeto decida normalizá-los. Tipografia usa classes MD3 (`text-headline-large`, `text-body-medium`), elevação vai de 0 a 5 e botões não têm mais caixa alta por padrão. `rgba(var(--v-theme-*), a)` deve virar `color-mix` ou sintaxe equivalente quando a cor do tema tiver transparência.
 
-Mobile-first; pontos de quebra Vuetify/useDisplay com comportamento por conteúdo. Evitar detecção por user agent. Tela a 320 CSS px e zoom verificados, sem rolagem horizontal global desnecessária. Tabelas podem virar lista/cartão ou manter região rolável acessível conforme tarefa, não conversão obrigatória. Evitar duplicar conteúdo acessível nas duas versões.
+Tema claro/escuro conforme requisito, preferência e escolha do usuário; tokens semânticos testados. Tema vindo da API/cache é dado não confiável: schema, allowlist de propriedades/valores, limites, fallback e versão; não aceitar CSS/script arbitrário. Bootstrap sem flash deve funcionar com CSP e armazenamento indisponível, sem assumir acesso síncrono à CDN. O tema padrão do Vuetify 4 é `system`, não `light`: decidir `defaultTheme` explicitamente; se `system` for mantido, os dois temas passam a ser superfície real e devem ser verificados.
+
+Mobile-first; pontos de quebra Vuetify/useDisplay com comportamento por conteúdo. Os limites do Vuetify 4 são md 840, lg 1145, xl 1545 e xxl 2138 (sm segue 600), com larguras menores de `VContainer`; não copiar os números do Vuetify 3. `VRow`/`VCol` usam `gap`, sem margens negativas nem padding de coluna; `VContainer` com `fill-height` não centraliza mais o conteúdo. Evitar detecção por user agent. Tela a 320 CSS px e zoom verificados, sem rolagem horizontal global desnecessária. Tabelas podem virar lista/cartão ou manter região rolável acessível conforme tarefa, não conversão obrigatória. Evitar duplicar conteúdo acessível nas duas versões.
 
 Imagens com dimensões/aspect ratio, srcset/sizes quando útil, lazy abaixo da dobra; não atrasar imagem principal crítica. Movimentos respeitam prefers-reduced-motion inclusive em mudança durante sessão. Decoração é opcional, sem obstruir controles, com pausa quando requerida, sem flashes perigosos e sem depender de sinais de hardware não disponíveis. Sinais ausentes não comprovam aparelho potente.
 
@@ -132,7 +136,7 @@ Idioma, país, moeda e fuso são conceitos separados. Precedência de URL/prefer
 
 ## 14. Acessibilidade
 
-Alvo recomendado WCAG 2.2 AA; seguir requisito contratual e critérios documentados. Teclado, foco visível e não encoberto, ordem lógica, skip link, headings/landmarks, nomes acessíveis, contraste em todos os temas e estados. Modal tem foco contido e retorno; gaveta não modal não deve prender foco automaticamente. Esc e prevenção de perda de edição têm comportamento definido.
+Alvo recomendado WCAG 2.2 AA; seguir requisito contratual e critérios documentados. Teclado, foco visível e não encoberto, ordem lógica, skip link, headings/landmarks, nomes acessíveis, contraste em todos os temas e estados. Modal tem foco contido e retorno; gaveta não modal não deve prender foco automaticamente. Esc e prevenção de perda de edição têm comportamento definido. Conferir contraste em cada tema: no Vuetify 4.3.1, labels com `medium-emphasis-opacity` padrão (0,60) reprovaram no axe no tema claro e passaram no escuro (0,70); corrigir por tema/variáveis, sem suprimir a regra.
 
 Redimensionamento de texto a 200% e reflow equivalente a 320 CSS px são verificações distintas; avaliar zoom de 400% no viewport de referência e exceções de conteúdo bidimensional. Alvos de 44 px são recomendação de usabilidade do padrão, não descrição universal do mínimo AA. Arrastar tem alternativa por controles/teclado; autenticação permite gerenciadores/colagem e não cria barreira cognitiva desnecessária.
 
@@ -144,7 +148,7 @@ Axe detecta parte dos problemas; incluir avaliação manual de teclado, foco, zo
 
 Definir navegadores/dispositivos e orçamento por superfície. Metas iniciais sugeridas: LCP <= 2,5s, INP <= 200ms e CLS <= 0,1 no percentil 75 de campo; ambiente de laboratório documentado fornece evidência complementar, não equivale a RUM. Definir orçamento de JS/CSS/imagens/fontes e medir build real.
 
-Lazy routes/componentes pesados, imports seletivos, imagens responsivas e fontes com fallback/métricas adequadas. Não prefetch de dados sensíveis nem conteúdo oneroso sem critério. Virtualizar quando volume justificar, preservando a11y. Evitar watchers profundos indiscriminados, solicitações duplicadas e trabalho após desmontagem.
+Lazy routes/componentes pesados, imports seletivos, imagens responsivas e fontes com fallback/métricas adequadas. Não prefetch de dados sensíveis nem conteúdo oneroso sem critério. Virtualizar quando volume justificar, preservando a11y. Evitar watchers profundos indiscriminados, solicitações duplicadas e trabalho após desmontagem. Se overlays dentro de diálogo ficarem atrás dele no dev server do Vite (duas instâncias de `useStack`), incluir os módulos de overlay em `optimizeDeps.include` e limpar `node_modules/.vite`; o build de produção não é afetado.
 
 Feature detection e fallback em APIs opcionais. Testar rede lenta/falha parcial e armazenamento bloqueado. Não prometer suporte de push, service worker, Intl ou deviceMemory sem verificar matriz de navegadores. Orçamento do e-commerce original não define SLO de todo projeto.
 
@@ -224,7 +228,7 @@ Toda rotina nova (geração, build, publicação, atualização de tema/ícones,
 
 ## 26. Origem, manutenção e limites
 
-1.0.0 (2026-10-29): extração da spec e-commerce 1.109.0; núcleo independente, opcionais, correções de sessão/reset, documentos, acessibilidade/SEO, contratos e concorrência; guardrails e fluxos consultivos para criação e adequação. Nenhum status de implementação do e-commerce foi promovido a componente disponível neste pacote.
+1.0.0 (2026-10-29): extração da spec e-commerce 1.109.0; núcleo independente, opcionais, correções de sessão/reset, documentos, acessibilidade/SEO, contratos e concorrência; guardrails e fluxos consultivos para criação e adequação. Nenhum status de implementação do e-commerce foi promovido a componente disponível neste pacote. 2.0.0 (2026-11-03): referência de projeto novo passa a Vuetify 4; registra tema `system`, cascade layers, reset, tipografia, pontos de quebra, grid, slots e overlays; legado segue sem migração automática.
 
 As bibliotecas próprias precisam de implementação, versão e evidências antes de reutilização. Esta spec não distribui Vue components, starter, adaptador de pagamento, gerador ou deploy. Manter este documento consistente com as referências da skill; mudanças de contrato incrementam versão e registram motivo. Mudanças só no README não exigem reescrever tags publicadas.
 
@@ -232,7 +236,9 @@ Referências técnicas (conferir versão efetiva ao implementar):
 
 - Vue, segurança: https://vuejs.org/guide/best-practices/security.html
 - Pinia, reset em setup stores: https://pinia.vuejs.org/core-concepts/state.html#resetting-the-state
-- Laravel Sanctum: https://laravel.com/docs/12.x/sanctum
+- Vuetify, guia de upgrade: https://vuetifyjs.com/en/getting-started/upgrade-guide/
+- Vuetify, suporte de longo prazo: https://vuetifyjs.com/en/introduction/long-term-support/
+- Laravel Sanctum: https://laravel.com/docs/13.x/sanctum
 - W3C, WCAG 2.2: https://www.w3.org/TR/WCAG22/
 - Google, JavaScript e SEO: https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics
 - Receita Federal, CNPJ alfanumérico: https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/cnpj-alfanumerico

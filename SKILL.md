@@ -2,12 +2,12 @@
 name: skill-frontend-mf
 description: Criar, revisar e reestruturar frontends Vue e Vuetify em JavaScript, com decisões consultivas, guardrails, design system e adequação incremental de projetos existentes. Usar para padronização frontend, novos módulos ou diagnóstico de arquitetura e UI; não aplicar a trabalho exclusivamente backend nem impor migração de framework a um projeto legado.
 metadata:
-  version: "1.0.0"
+  version: "2.0.0"
 ---
 
 # Frontend MF
 
-Oriente a criação e a evolução de frontends conforme a [especificação 1.0.0](references/especificacao-1.0.0.md). Preserve decisões do usuário, contratos, governança e identidade visual do projeto. Esta skill não autoriza migrações de stack, instalação de todos os opcionais ou deploy.
+Oriente a criação e a evolução de frontends conforme a [especificação 2.0.0](references/especificacao-2.0.0.md), cuja referência de projeto novo é Vuetify 4. Preserve decisões do usuário, contratos, governança e identidade visual do projeto. Esta skill não autoriza migrações de stack, instalação de todos os opcionais ou deploy.
 
 ## Fluxo de trabalho
 
@@ -22,7 +22,7 @@ Oriente a criação e a evolução de frontends conforme a [especificação 1.0.
 
 ## Invariantes
 
-- Vue/Vuetify são a stack de referência. Não migre framework, versões, pastas ou arquitetura de um legado sem escopo aprovado. Identificadores novos de domínio em pt-BR; preserve os existentes e os do framework.
+- Vue/Vuetify são a stack de referência. Não migre framework, versões, pastas ou arquitetura de um legado sem escopo aprovado: projeto em Vuetify 3 permanece nele até haver essa decisão. Identificadores novos de domínio em pt-BR; preserve os existentes e os do framework.
 - Não presuma loja, painel separado, multi-tenancy, SSR, PWA, WebSocket, analytics, CAPTCHA, pagamentos ou fornecedores. Use o [catálogo consultivo](references/seguranca-consulta.md).
 - Autorização e resultados comerciais são do backend. Guards e botões ocultos são UX, não proteção. Contexto de sessão desconhecido não autoriza mostrar dados protegidos.
 - Dados de usuário/tenant anterior não podem reaparecer por cache, aba, WebSocket ou resposta assíncrona atrasada. Limpeza local não comprova logout remoto.

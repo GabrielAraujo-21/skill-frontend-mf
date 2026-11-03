@@ -1,0 +1,5 @@
+
+> laboratorio-vuetify-4@2.0.0 lint
+> eslint .
+
+lint-exit=0

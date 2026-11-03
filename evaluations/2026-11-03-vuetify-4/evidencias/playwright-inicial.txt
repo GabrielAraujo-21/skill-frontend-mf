@@ -1,0 +1,76 @@
+
+Running 12 tests using 1 worker
+
+(node:89) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 browser/vuetify4.spec.js:20:3 › defaultTheme system segue o sistema: light, sem violações axe (770ms)
+(node:199) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 browser/vuetify4.spec.js:20:3 › defaultTheme system segue o sistema: dark, sem violações axe (740ms)
+  ✘   3 browser/vuetify4.spec.js:30:1 › estado de erro e vazio são acessíveis (653ms)
+(node:340) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 browser/vuetify4.spec.js:36:1 › camadas CSS: ordem declarada e utilitários vencem componentes (227ms)
+  ✓   5 browser/vuetify4.spec.js:55:1 › reset reduzido, botão sem caixa alta e tipografia MD3 (186ms)
+  ✓   6 browser/vuetify4.spec.js:76:3 › largura 839: ponto sm, grid empilha, sem rolagem horizontal (205ms)
+  ✓   7 browser/vuetify4.spec.js:76:3 › largura 840: ponto md, grid lado, sem rolagem horizontal (210ms)
+  ✓   8 browser/vuetify4.spec.js:76:3 › largura 1145: ponto lg, grid lado, sem rolagem horizontal (201ms)
+  ✓   9 browser/vuetify4.spec.js:76:3 › largura 320: ponto xs, grid empilha, sem rolagem horizontal (211ms)
+  ✓  10 browser/vuetify4.spec.js:92:1 › slot de VSelect recebe item bruto e internalItem; VForm atualiza validade (530ms)
+  ✓  11 browser/vuetify4.spec.js:103:1 › menu dentro de diálogo fica acima do diálogo e é operável (980ms)
+  ✓  12 browser/vuetify4.spec.js:119:1 › teclado alcança o formulário com foco visível (201ms)
+
+
+  1) browser/vuetify4.spec.js:20:3 › defaultTheme system segue o sistema: light, sem violações axe ─
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "color-contrast: #input-v-1-label | label[for=\"input-v-5\"]",
+    + ]
+
+      14 | async function semViolacoes(page) {
+      15 |   const { violations } = await new AxeBuilder({ page }).analyze()
+    > 16 |   expect(violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(' | ')}`)).toEqual([])
+         |                                                                                                   ^
+      17 | }
+      18 |
+      19 | for (const esquema of ['light', 'dark']) {
+        at semViolacoes (/lab/app/browser/vuetify4.spec.js:16:99)
+        at /lab/app/browser/vuetify4.spec.js:25:5
+
+    Error Context: test-results/vuetify4-defaultTheme-syst-7b6ca-ema-light-sem-violações-axe/error-context.md
+
+  2) browser/vuetify4.spec.js:30:1 › estado de erro e vazio são acessíveis ─────────────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "color-contrast: #input-v-1-label | label[for=\"input-v-5\"]",
+    + ]
+
+      14 | async function semViolacoes(page) {
+      15 |   const { violations } = await new AxeBuilder({ page }).analyze()
+    > 16 |   expect(violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(' | ')}`)).toEqual([])
+         |                                                                                                   ^
+      17 | }
+      18 |
+      19 | for (const esquema of ['light', 'dark']) {
+        at semViolacoes (/lab/app/browser/vuetify4.spec.js:16:99)
+        at /lab/app/browser/vuetify4.spec.js:33:3
+
+    Error Context: test-results/vuetify4-estado-de-erro-e-vazio-são-acessíveis/error-context.md
+
+  2 failed
+    browser/vuetify4.spec.js:20:3 › defaultTheme system segue o sistema: light, sem violações axe ──
+    browser/vuetify4.spec.js:30:1 › estado de erro e vazio são acessíveis ──────────────────────────
+  10 passed (8.9s)
+playwright-exit=1

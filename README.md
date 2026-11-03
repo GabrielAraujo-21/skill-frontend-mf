@@ -1,4 +1,4 @@
-# Frontend MF — skill 1.0.0
+# Frontend MF — skill 2.0.0
 
 Skill para criar e reestruturar frontends Vue/Vuetify em JavaScript, com arquitetura modular, guardrails de segurança e decisões consultivas com o desenvolvedor.
 
@@ -10,12 +10,12 @@ Skill para criar e reestruturar frontends Vue/Vuetify em JavaScript, com arquite
 - Padroniza API, estado, sessão, formulários, acessibilidade, responsividade e qualidade.
 - Trata multi-tenancy, SEO/SSR, PWA, tempo real, analytics e pagamentos como escolhas contextuais.
 
-Referência: Vue 3, Vuetify 3, JavaScript, Composition API, Vite, Pinia, Vue Router e Axios. Versões exatas são conferidas em cada projeto; a skill não atualiza dependências automaticamente. É complementar à [Backend MF](https://github.com/GabrielAraujo-21/skill-backend-mf), mas não depende de sua instalação.
+Referência de projeto novo: Vue 3, Vuetify 4, JavaScript, Composition API, Vite, Pinia, Vue Router e Axios. Versões exatas são conferidas em cada projeto; a skill não atualiza dependências automaticamente, e projetos em Vuetify 3 permanecem nele até haver decisão própria. É complementar à [Backend MF](https://github.com/GabrielAraujo-21/skill-backend-mf), mas não depende de sua instalação.
 
 ## Conteúdo
 
 - [Instruções da skill](SKILL.md)
-- [Especificação frontend 1.0.0](references/especificacao-1.0.0.md)
+- [Especificação frontend 2.0.0](references/especificacao-2.0.0.md)
 - [Guardrails e fluxo consultivo](references/seguranca-consulta.md)
 - [Projetos novos](references/projeto-novo.md)
 - [Projetos existentes e diagnóstico](references/projeto-existente.md)
@@ -157,7 +157,7 @@ Linux/macOS: confira `git -C "$HOME/.agents/skills/skill-frontend-mf" status --s
 
 Cópia por projeto: atualize a origem, compare e incorpore o diff revisado, preservando personalizações. Atualizar a pasta de desenvolvimento não atualiza outras cópias instaladas.
 
-Para fixar o lançamento original, em clone limpo execute `git checkout --detach v1.0.0`. A tag não acompanha `main`; esse clone não recebe atualizações pelo procedimento acima enquanto estiver destacado. Tags publicadas não são movidas para incluir correções posteriores.
+A skill 2.0.0 muda a referência de projeto novo para Vuetify 4 e não migra projetos existentes. Para fixar o lançamento original, com referência Vuetify 3, em clone limpo execute `git checkout --detach v1.0.0`. A tag não acompanha `main`; esse clone não recebe atualizações pelo procedimento acima enquanto estiver destacado. Tags publicadas não são movidas para incluir correções posteriores.
 
 ## Verificar o pacote
 
@@ -193,3 +193,9 @@ Consulte o [relatório, evidências e reprodução](evaluations/2026-10-29/READM
 ## Validação integrada Laravel e Vue/Vuetify
 
 [Projetos completos, dez testes Chromium, correções e reprodução](evaluations/2026-10-29-integracao/README.md). A avaliação inclui autenticação real, SQLite, duas abas, falhas de rede e acessibilidade automatizada; os limites estão no relatório.
+
+Esses dois laboratórios de 29/10/2026 permanecem em Vuetify 3 como registro histórico.
+
+## Validação Vuetify 4 executada em 03/11/2026
+
+[Projeto mínimo, comandos, 12 testes Chromium, correção de contraste e limites](evaluations/2026-11-03-vuetify-4/README.md).
